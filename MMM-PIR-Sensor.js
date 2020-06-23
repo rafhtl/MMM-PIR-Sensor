@@ -33,7 +33,9 @@ Module.register('MMM-PIR-Sensor',{
 			}
 		} else if (notification === 'SHOW_ALERT') {
 			this.sendNotification(notification, payload)
-		}
+		} else{
+            this.sendNotification(notification, payload) 
+        }
 	},
 
 	notificationReceived: function (notification, payload) {
