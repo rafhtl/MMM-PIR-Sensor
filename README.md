@@ -137,7 +137,7 @@ pirMessageGestureDetetected: "GESTURE_DETECTED",
 
 if left "" will behave same way will interact with MMM-NotificationTrigger
 
-this is useful if you need some pages left always on
+this is useful if you need some pages left always on 
 `
           {
             trigger: "GESTURE_IDLE",
@@ -146,7 +146,11 @@ this is useful if you need some pages left always on
             
             {		
                 fire: "OUTGOING_EXECUTE",
-                exec: "/usr/bin/vcgencmd display_power 0" 
+                exec: function() {
+                    thereturn = (pagename=="images01" ) ? "" : "/usr/bin/vcgencmd display_power 0"
+                    return thereturn
+                    }
+                
             }
             ], 
           },
