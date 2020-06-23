@@ -130,10 +130,13 @@ The following properties can be configured:
 This module broadcasts a `USER_PRESENCE` notification with the payload beeing `true` or `false` you can use it to pause or disable your module.
 
 additions from rafHTL
+
 pirMessageIdle: "GESTURE_IDLE",
+
 pirMessageGestureDetetected: "GESTURE_DETECTED",
-if left "" will behave same way
-will interact with MMM-NotificationTrigger
+
+if left "" will behave same way will interact with MMM-NotificationTrigger
+
 `
           {
             trigger: "GESTURE_IDLE",
