@@ -28,10 +28,15 @@ module.exports = NodeHelper.create({
         }
         else if (this.config.relayPin === false) {
             // Check if hdmi output is already on
+            var self = this;
             exec("/usr/bin/vcgencmd display_power").stdout.on('data', function(data) {
-                if (data.indexOf("display_power=0") === 0)
-                    //exec("/usr/bin/vcgencmd display_power 1", null);
-                    this.sendSocketNotification("GESTURE_DETECTED", true);
+                if (data.indexOf("display_power=0") === 0){
+                    if(self.config.pirMessageGestureDetetected!=""){
+                        self.sendSocketNotification(self.config.pirMessageGestureDetetected, true);
+                    }else{
+                        exec("/usr/bin/vcgencmd display_power 1", null);
+                    }
+                }
             });
         }
     },
@@ -48,8 +53,13 @@ module.exports = NodeHelper.create({
             this.relay.writeSync((this.config.relayState + 1) % 2);
         }
         else if (this.config.relayPin === false) {
-            //exec("/usr/bin/vcgencmd display_power 0", null);
-            this.sendSocketNotification("GESTURE_IDLE", true);
+            if(this.config.pirMessageIdle!=""){
+                this.sendSocketNotification(this.config.pirMessageIdle, true);
+            }else{
+                exec("/usr/bin/vcgencmd display_power 0", null);
+            }
+          
+            
         }
     },
 
@@ -63,8 +73,11 @@ module.exports = NodeHelper.create({
             if (this.config.relayPin) {
                 this.relay = new Gpio(this.config.relayPin, 'out');
                 this.relay.writeSync(this.config.relayState);
-                //exec("/usr/bin/vcgencmd display_power 1", null);
-                this.sendSocketNotification("GESTURE_DETECTED", true);
+                if(self.config.pirMessageGestureDetetected!=""){
+                    self.sendSocketNotification(self.config.pirMessageGestureDetetected, true);
+                }else{
+                    exec("/usr/bin/vcgencmd display_power 1", null);
+                }
                 
             }
 

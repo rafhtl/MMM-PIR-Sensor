@@ -22,6 +22,8 @@ Module.register('MMM-PIR-Sensor',{
 		powerSavingDelay: 0,
 		powerSavingNotification: false,
 		powerSavingMessage: "Monitor will be turn Off by PIR module", 
+        pirMessageIdle: "GESTURE_IDLE",
+        pirMessageGestureDetetected: "GESTURE_DETECTED",
 	},
 
 	// Override socket notification handler.

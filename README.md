@@ -129,6 +129,36 @@ The following properties can be configured:
 ## Developer Notes
 This module broadcasts a `USER_PRESENCE` notification with the payload beeing `true` or `false` you can use it to pause or disable your module.
 
+additions from rafHTL
+pirMessageIdle: "GESTURE_IDLE",
+pirMessageGestureDetetected: "GESTURE_DETECTED",
+if left "" will behave same way
+will interact with MMM-NotificationTrigger
+`
+          {
+            trigger: "GESTURE_IDLE",
+            
+            fires: [
+            
+            {		
+                fire: "OUTGOING_EXECUTE",
+                exec: "/usr/bin/vcgencmd display_power 0" 
+            }
+            ], 
+          },
+          {
+            trigger: "GESTURE_DETECTED",
+            
+            fires: [
+            
+            {		
+                fire: "OUTGOING_EXECUTE",
+                exec: "/usr/bin/vcgencmd display_power 1" 
+            }
+            ], 
+          },
+`
+
 ## Dependencies
 - [wiring-pi](https://www.npmjs.com/package/wiring-pi) (installed via `npm install`)
 
