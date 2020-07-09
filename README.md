@@ -8,6 +8,8 @@ This an extension for the [MagicMirror](https://github.com/MichMich/MagicMirror)
 4. Execute `sudo chmod u+s /opt/vc/bin/tvservice && sudo chmod u+s /bin/chvt` to allow turning on/off the hdmi output.
 5. Reboot your Pi.
 
+careful u might need to stop mirror and delete node_modules in pir folder and run npm install
+
 ## Using the module
 
 To use this module, add it to the modules array in the `config/config.js` file:
